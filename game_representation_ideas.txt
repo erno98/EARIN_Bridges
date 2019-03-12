@@ -1,0 +1,14 @@
+IDEA 1: Representing the game as a NxN table?
+0 means no island, 1,2,... means the number on the island
+example:
+3 0 0 0 0 2 0
+0 3 0 2 0 0 0
+4 0 2 0 0 4 0
+0 0 0 0 0 0 0
+0 0 3 0 2 0 0
+0 2 0 0 0 3 0
+3 0 0 0 2 0 1
+v - one vertical bridge
+V - two vertical bridges
+h - one horizontal bridge
+H - two horizontal bridges

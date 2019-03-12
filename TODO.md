@@ -1,14 +1,18 @@
 - ## Before coding
   - ### Formal description of the puzzle
       - Puzzle environment
+      - Describing the puzzle as a graph?
       - Rules
   - ### Design of the search space
     - Description of the puzzle space
     - Models of the search & puzzle spaces
     - Relations between puzzle and search spaces
-  - ### Design of the heuristic function
-    - Admissable and monotonic?
-  - ### Cost function?
+  - ### Uninformed search
+    - ?
+  - ### Informed search
+    - Design of the heuristic function
+      - Admissable and monotonic?
+    - Cost function?
 
 - ## Coding
   - ### Puzzle implementation

@@ -18,3 +18,14 @@ PROBLEM: numpy arrays don't support strigs/characters. Bridges should be shown a
          12 - two vertical bridges
          21 - one horizontal bridge
          22 - two horizontal bridges
+        
+
+In the program: board state saved as:
+         1. Numpy array representing the board
+         2. List of islands consisting of:
+                  a) x, y coordinates
+                  b) number of expected bridges
+                  c) number of current bridges
+         3. Bool - Solved or not
+         
+Maybe instead of the array add count of bridges in each direction (N, S, E, W) to the list of islands and try to work it from that?

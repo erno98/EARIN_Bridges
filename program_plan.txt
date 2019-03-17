@@ -1,0 +1,12 @@
+PLAN OF OPERATION FOR THE PROGRAM:
+
+1) Read board from file an put it into a 2D array
+2) Create instance bs1 of class BoardState with that 2D array
+3) Use generate_islands()
+4) Create a tree and put bs1 as root
+5) Copy bs1 into bs2 and make a move:
+	a) Find a correct move
+	b) Place bridge (mby a method place_bridge() in BoardState?)
+	c) evaluate() the BoardState
+	d) Repeat until done
+6) Run the tree through search algorithms

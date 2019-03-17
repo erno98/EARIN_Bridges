@@ -21,7 +21,7 @@ PROBLEM: numpy arrays don't support strigs/characters. Bridges should be shown a
         
 
 In the program: board state saved as:
-         1. Numpy array representing the board
+         1. 2D array representing the board
          2. List of islands consisting of:
                   a) x, y coordinates
                   b) number of expected bridges

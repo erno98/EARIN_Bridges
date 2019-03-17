@@ -1,2 +1,2 @@
 # EARIN_Bridges
-Bridges (hachi)
+Bridges (hashi)

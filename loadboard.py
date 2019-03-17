@@ -1,0 +1,2 @@
+"""tutaj ładowanie z pliku
+"""

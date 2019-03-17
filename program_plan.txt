@@ -10,3 +10,5 @@ PLAN OF OPERATION FOR THE PROGRAM:
 	c) evaluate() the BoardState
 	d) Repeat until done
 6) Run the tree through search algorithms
+
+!!!W sumie w taki sposób jak myślę, żeby napisać to place_bridge(), to można drzewa generować podając tej metodzie na pałe wszystkie kombinacje połączeń i jak uda się dobry ruch zrobić to wtedy break i cyk szukamy kolejnego, imo dobry pomysł

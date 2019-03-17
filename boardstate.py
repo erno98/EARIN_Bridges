@@ -72,6 +72,19 @@ class BoardState():
         """
         pass
 
+    def add_bridge(self, island_one: int, island_two: int):
+        """Method for adding a new bridge between two specified islands.
+        Only places bridges if it is a correct move
+        
+        args:
+            island_one (int): id (index in the list) of the first island two connect
+            island_two (int): id of the other island to connect
+
+        returns:
+            True if placement was successful, False otherwise
+        """
+        pass
+
     class Island():
         """Class representing one island, used in the island list
 

@@ -15,14 +15,15 @@ class BoardState():
         islands ([]): a list of Island classes, representing islands
         solved (bool): denotes whether the board represents a solved state or not
     """
-    def __init__(self, board_matrix = [[]], island_list = []):
+    def __init__(self, board_matrix = [[]]):
         """init method
 
-        By default the board matrix and island list are initialized as empty
+        By default the board matrix is initialized as empty
+        The island list is always initialized as empty, use method generate_islands() to update
         The solved attribute is always initialized as False, use method evaluate() to update
         """
         self.board = board_matrix
-        self.islands = island_list
+        self.islands = []
         self.solved = False
 
     def evaluate(self):
@@ -41,6 +42,35 @@ class BoardState():
         """
         self.solved = False
         return False
+
+    def add_island(self, x: int, y: int, bridges: int):
+        """Method for adding a new island to the lsit of islands
+
+        It creates an instance of class Island with the given parameters, appends it to the island list
+        and adds a new island to the connections list of all islands on the list
+
+        args:
+            x (int): x coordinate
+            y (int): y coordinate
+            bridges (int): number of expected bridges
+
+        returns:
+            void
+        """
+        self.islands.append(BoardState.Island(x, y, bridges))
+        for isl in self.islands:
+            isl.connections.append(0)
+
+    def generate_islands(self):
+        """Method for generating the island list from the current board matrix
+
+        args:
+            None
+
+        returns:
+            void
+        """
+        pass
 
     class Island():
         """Class representing one island, used in the island list

@@ -26,6 +26,7 @@ In the program: board state saved as:
                   a) x, y coordinates
                   b) number of expected bridges
                   c) number of current bridges
+                  d) list of id's of connected islands - for checking if the graph is connected
          3. Bool - Solved or not
          
 Maybe instead of the array add count of bridges in each direction (N, S, E, W) to the list of islands and try to work it from that?

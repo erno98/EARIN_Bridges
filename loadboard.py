@@ -7,8 +7,9 @@ def load_map(file_name):
     #   - remove the '\n' symbol
     #   - split each element separated by ' '
     #   - map inside elements to integers
-
+"""
 #test
 puzzle_map = load_map("bridges7x7_1.txt")
 print(puzzle_map)
 #print poglądowy bo mogę
+"""

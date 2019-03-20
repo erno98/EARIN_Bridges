@@ -1,0 +1,10 @@
+define bridge mass BM as:
+  BM = i_n + i_k
+where i is the value of the island n and k consecutively
+REMARK: if i_n = 1, then i_k cannot be 1.
+
+then, the puzzle mass PM can be described as the sum of all BMs in the puzzle
+// considering changing 'PM' shortcut due to recent inconveniences
+
+Therefore, the algorithm should try to maximize PM value (intuition of connecting biggest islands*)
+*TODO: mathematical explanation?

@@ -54,6 +54,8 @@ def generate_tree_bfs(board: [[]]):
                 #If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()
+                    if moves_tree.find(board_next):
+                        continue
                     generated += 1
                     if __debug:
                         print(generated)
@@ -88,19 +90,21 @@ def generate_tree_dfs(board: [[]]):
     moves_tree = Tree(root_board)
 
     node_current = moves_tree.root
-    dfs_internal(node_current)
+    dfs_internal(node_current, moves_tree)
 
     return moves_tree
 
-def dfs_internal(node: Tree.Node):
+def dfs_internal(node: Tree.Node, tree: Tree):
     global generated_dfs
     island_count = len(node.content.islands)
     board_next = deepcopy(node).content
     for i in range(island_count):
             for j in range(i + 1, island_count):
-                #If bridge added succesfully, add to tree and stack and copy again
+                #If bridge added succesfully, add to tree etc
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()
+                    if tree.find(board_next):
+                        continue
                     generated_dfs += 1
                     if __debug:
                         print(generated_dfs)
@@ -111,4 +115,4 @@ def dfs_internal(node: Tree.Node):
                         return
                     node_next = Tree.Node(board_next)
                     node.children.append(node_next)
-                    dfs_internal(node_next)
+                    dfs_internal(node_next, tree)

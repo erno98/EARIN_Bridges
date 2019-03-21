@@ -1,8 +1,26 @@
 from copy import deepcopy
 from tree import Tree
 from boardstate import BoardState
+__debug = True
 
-def generate_tree(board: [[]]):
+if __debug:
+    def print_board(brd: [[]]):
+        for m in brd:
+            row = ""
+            for n in m:
+                if n == 21:
+                    row = row+"-"+" "
+                elif n == 22:
+                    row = row+"="+" "
+                elif n == 11:
+                    row = row+"|"+" "
+                elif n == 12:
+                    row = row+":"+" "
+                else:
+                    row = row+str(n)+" "
+            print(row)
+
+def generate_tree_bfs(board: [[]]):
     """
     """
     #Checking size
@@ -23,6 +41,8 @@ def generate_tree(board: [[]]):
     to_generate = []
     to_generate.append(moves_tree.root)
     nodes_visited = 0
+    generated = 0
+    final_board = None
     while len(to_generate) > 0:
         #Take element from stack
         node_current = to_generate.pop()
@@ -33,9 +53,18 @@ def generate_tree(board: [[]]):
             for j in range(i + 1, island_count):
                 #If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
+                    board_next.evaluate()
+                    generated += 1
+                    if __debug:
+                        print(generated)
+                        print(board_next.solved)
+                        print_board(board_next.board)
+                    if board_next.solved:
+                        final_board = board_next
+                        break
                     node_next = Tree.Node(board_next)
                     node_current.children.append(node_next)
-                    to_generate.append(node_next)
+                    to_generate.insert(0, node_next)
                     board_next = deepcopy(node_current).content
 
-    return moves_tree
+    return moves_tree, final_board

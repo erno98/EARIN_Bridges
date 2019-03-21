@@ -1,5 +1,6 @@
 # TODO:
-#  Save tree to file: https://stackoverflow.com/questions/1047318/easiest-way-to-persist-a-data-structure-to-a-file-in-python
+#  Save tree to file:
+#       https://stackoverflow.com/questions/1047318/easiest-way-to-persist-a-data-structure-to-a-file-in-python
 #  Progress bar: https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
 
 from copy import deepcopy
@@ -48,6 +49,7 @@ def generate_tree_bfs(board: [[]]):
     generated = 0
     final_board = None
     while len(to_generate) > 0:
+
         #Take element from stack
         node_current = to_generate.pop()
         nodes_visited += 1
@@ -55,6 +57,7 @@ def generate_tree_bfs(board: [[]]):
         #Making all possible moves
         for i in range(island_count):
             for j in range(i + 1, island_count):
+
                 #If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()

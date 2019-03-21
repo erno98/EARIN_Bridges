@@ -25,6 +25,24 @@ class BoardState():
         self.islands = []
         self.solved = False
 
+    def possible_bridges(self):
+        """Method for evaluating maximal number of possible bridges
+
+        args:
+            None
+
+        Returns:
+            number of bridges possible to be placed
+        """
+
+        num = 0
+
+        for isl in self.islands:
+            num += isl.bridges_expected
+
+        return num/2
+
+
     def evaluate(self):
         """Method for evaluating if the board state represented is solved or not
 

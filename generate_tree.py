@@ -1,3 +1,7 @@
+# TODO:
+#  Save tree to file: https://stackoverflow.com/questions/1047318/easiest-way-to-persist-a-data-structure-to-a-file-in-python
+#  Progress bar: https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
+
 from copy import deepcopy
 from tree import Tree
 from boardstate import BoardState

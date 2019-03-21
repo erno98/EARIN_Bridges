@@ -68,3 +68,47 @@ def generate_tree_bfs(board: [[]]):
                     board_next = deepcopy(node_current).content
 
     return moves_tree, final_board
+
+generated_dfs = 0
+
+def generate_tree_dfs(board: [[]]):
+    """
+    """
+    #Checking size
+    size = len(board)
+    for i in range(size):
+        if len(board[i]) != size:
+            raise Exception("Board matrix is not a square")
+    #Creating BoardState from a matrix
+    root_board = BoardState(board)
+    root_board.generate_islands()
+    root_board.evaluate()
+
+    #Initiating Tree
+    moves_tree = Tree(root_board)
+
+    node_current = moves_tree.root
+    dfs_internal(node_current)
+
+    return moves_tree
+
+def dfs_internal(node: Tree.Node):
+    global generated_dfs
+    island_count = len(node.content.islands)
+    board_next = deepcopy(node).content
+    for i in range(island_count):
+            for j in range(i + 1, island_count):
+                #If bridge added succesfully, add to tree and stack and copy again
+                if board_next.add_bridge(i, j):
+                    board_next.evaluate()
+                    generated_dfs += 1
+                    if __debug:
+                        print(generated_dfs)
+                        print(board_next.solved)
+                        print_board(board_next.board)
+                    if board_next.solved:
+                        print("HALO")
+                        return
+                    node_next = Tree.Node(board_next)
+                    node.children.append(node_next)
+                    dfs_internal(node_next)

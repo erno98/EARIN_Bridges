@@ -6,9 +6,10 @@ a na razie cos tam se testuje
 
 #tescior
 from loadboard import load_map
-from generate_tree import generate_tree_bfs, generate_tree_dfs
+from generate_tree import generate_tree_bfs, generate_tree_dfs, print_board
 
 #moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
-moves = generate_tree_bfs(load_map("bridges7x7_2.txt"))
+moves, brd = generate_tree_dfs(load_map("bridges7x7_2.txt"))
 
-print("\nsiema")
+print_board(brd.board)
+print(brd.solved)

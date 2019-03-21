@@ -114,9 +114,9 @@ def generate_tree_dfs(board: [[]]):
     moves_tree = Tree(root_board)
 
     node_current = moves_tree.root
-    dfs_internal(node_current, moves_tree)
+    final_board = dfs_internal(node_current, moves_tree)
 
-    return moves_tree
+    return moves_tree, final_board
 
 
 def dfs_internal(node: Tree.Node, tree: Tree):
@@ -137,7 +137,10 @@ def dfs_internal(node: Tree.Node, tree: Tree):
                         print_board(board_next.board)
                     if board_next.solved:
                         print("HALO")
-                        return
+                        return board_next
                     node_next = Tree.Node(board_next)
                     node.children.append(node_next)
-                    dfs_internal(node_next, tree)
+                    final_board = dfs_internal(node_next, tree)
+                    if final_board != None:
+                        return final_board
+    return None

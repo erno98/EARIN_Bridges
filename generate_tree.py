@@ -7,7 +7,7 @@ from boardstate import BoardState
 from progress_bar import print_progress
 from scipy.special import binom
 from math import factorial as fact
-__debug = False
+__debug = True
 
 #if __debug:
 
@@ -82,6 +82,8 @@ def generate_tree_bfs(board: [[]]):
                         print_board(board_next.board)
                     if board_next.solved:
                         print('\n')
+                        print(generated)
+                        print(board_next.solved)
                         final_board = board_next
                         print_board(board_next.board)
                         return moves_tree, final_board
@@ -123,9 +125,10 @@ def dfs_internal(node: Tree.Node, tree: Tree):
     global generated_dfs
     island_count = len(node.content.islands)
     board_next = deepcopy(node).content
+
     for i in range(island_count):
             for j in range(i + 1, island_count):
-                # If bridge added succesfully, add to tree etc
+                # If bridge added successfully, add to tree etc
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()
                     if tree.find(board_next):

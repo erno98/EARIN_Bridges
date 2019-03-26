@@ -8,8 +8,8 @@ a na razie cos tam se testuje
 from loadboard import load_map
 from generate_tree import generate_tree_bfs, generate_tree_dfs, print_board
 
-# moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
-moves, brd = generate_tree_dfs(load_map("bridges7x7_3.txt"))
+moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
+# moves, brd = generate_tree_dfs(load_map("bridges7x7_3.txt"))
 
 print_board(brd.board)
 print(brd.solved)

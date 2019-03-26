@@ -81,7 +81,7 @@ class BoardState():
         return False
 
     def add_island(self, x: int, y: int, bridges: int):
-        """Method for adding a new island to the lsit of islands
+        """Method for adding a new island to the list of islands
 
         It creates an instance of class Island with the given parameters, appends it to the island list
         and adds a new island to the connections list of all islands on the list
@@ -223,4 +223,7 @@ class BoardState():
             self.bridges_expected = bridges
             self.bridges_current = 0
             self.connections = []
-            
+        #
+        # def is_connected(self):
+        #     return self.connections != []
+

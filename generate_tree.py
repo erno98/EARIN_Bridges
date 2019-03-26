@@ -7,6 +7,7 @@ from boardstate import BoardState
 from progress_bar import print_progress
 from scipy.special import binom
 from math import factorial as fact
+from heuristic import board_mass
 __debug = True
 
 #if __debug:
@@ -66,13 +67,19 @@ def generate_tree_bfs(board: [[]]):
         nodes_visited += 1
         print_progress(nodes_visited, node_number, prefix='Nodes visited', suffix='Complete')
         board_next = deepcopy(node_current).content
+
+
+
         # Making all possible moves
         for i in range(island_count):
             for j in range(i + 1, island_count):
 
+
+
                 # If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()
+                    # print(board_mass(board_next))
                     if moves_tree.find(board_next):
                         continue
                     generated += 1

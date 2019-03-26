@@ -1,8 +1,10 @@
 from tree import Tree
+from boardstate import BoardState
 
-def biggest_mass(left_node:Tree.Node, right_node:Tree.Node):
 
-    """Function for evaluating the biggest mass of the two given nodes of the tree
+def board_mass(board : BoardState):
+
+    """Function for evaluating the mass of given board
 
     define bridge mass BM as:
     BM = i_n + i_k
@@ -10,19 +12,16 @@ def biggest_mass(left_node:Tree.Node, right_node:Tree.Node):
     REMARK: if i_n = 1, then i_k cannot be 1.
 
     args:
-        nodes of the tree
+        boardstate object
 
     Returns:
-        0 if the the left subtree has bigger mass, 1 if right one. For equal masses,
-        the function should check children of the given nodes and return values as
-        described previously.
+        mass of the board
     """
 
-    # TODO: implementation
+    mass = 0
 
+    for island in board.islands:
+        for i in range(len(island.connections)):
+            mass += island.connections[i] * (island.bridges_expected + board.islands[i].bridges_expected)
 
-    left_mass = 0
-    right_mass = 0
-
-
-    return 0
+    return mass/2

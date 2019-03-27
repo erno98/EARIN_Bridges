@@ -8,26 +8,9 @@ from progress_bar import print_progress
 from scipy.special import binom
 from math import factorial as fact
 from heuristic import board_mass
+from debug import print_board
+
 __debug = True
-
-#if __debug:
-
-def print_board(brd: [[]]):
-    for m in brd:
-        row = ""
-        for n in m:
-            if n == 21:
-                row = row+"-"+" "
-            elif n == 22:
-                row = row+"="+" "
-            elif n == 11:
-                row = row+"|"+" "
-            elif n == 12:
-                row = row+":"+" "
-            else:
-                row = row+str(n)+" "
-        print(row)
-
 
 def generate_tree_bfs(board: [[]]):
     """

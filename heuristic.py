@@ -26,10 +26,11 @@ def board_mass(board: BoardState):
     return mass/2
 
 
-def board_cost(board: BoardState):
-    """Function for evaluating cost of the given board
+def board_cohesion(board: BoardState):
+    """Function for evaluating cohesion of given board
+        cohesion describes how big island 'agglomerations' exist in the board.
 
-        define board cost C as:
+        define board cohesion C as:
             C = n - x
             where n is the number of all islands, and x is the biggest number of islands forming a path
 
@@ -37,7 +38,7 @@ def board_cost(board: BoardState):
             BoardState object
 
         Returns:
-            cost of the board
+            cohesion of the board (int)
     """
 
     islands_num = 0
@@ -45,6 +46,6 @@ def board_cost(board: BoardState):
 
     #TODO: zrobić to bo jestem zjebany
 
-    cost = islands_num - len(max(paths))
-    return cost
+    cohesion = islands_num - len(max(paths))
+    return cohesion
 

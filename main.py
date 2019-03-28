@@ -11,7 +11,7 @@ from debug import print_board
 from uninformed import iterative_dfs
 from informed import a_star
 from time import process_time
-from heuristic import board_cost
+from heuristic import board_cohesion
 from boardstate import BoardState
 
 # moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
@@ -52,7 +52,7 @@ while current != None:
 print("---")
 for brd in boards:
     print_board(brd)
-    print(f"COST = {board_cost(BoardState(brd))}")
+    print(f"COHESION = {board_cohesion(BoardState(brd))}")
     print("...")
 
 """

@@ -4,7 +4,7 @@
 from copy import deepcopy
 from tree import Tree
 from boardstate import BoardState
-from progress_bar import print_progress
+# from progress_bar import print_progress
 from scipy.special import binom
 from math import factorial as fact
 from heuristic import board_mass
@@ -41,14 +41,14 @@ def generate_tree_bfs(board: [[]]):
     generated = 0
     final_board = None
 
-    print_progress(0, node_number, prefix='Nodes visited', suffix='Complete')
+  #  print_progress(0, node_number, prefix='Nodes visited', suffix='Complete')
 
     while len(to_generate) > 0:
 
         # Take element from stack
         node_current = to_generate.pop()
         nodes_visited += 1
-        print_progress(nodes_visited, node_number, prefix='Nodes visited', suffix='Complete')
+      #  print_progress(nodes_visited, node_number, prefix='Nodes visited', suffix='Complete')
         board_next = deepcopy(node_current).content
 
 

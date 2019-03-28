@@ -11,6 +11,8 @@ from debug import print_board
 from uninformed import iterative_dfs
 from informed import a_star
 from time import process_time
+from heuristic import board_cost
+from boardstate import BoardState
 
 # moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
 # moves, brd = generate_tree_dfs(load_map("bridges7x7_3.txt"))
@@ -33,6 +35,7 @@ print("depth = ", depth)
 print("nodes visited: ", visited)
 print("time: ", time, " [s]")
 
+
 boards = [start_board, final_board]
 #zmienic to (chcesz to zautomatyzuj)
 find_1 = int(depth/2)
@@ -49,6 +52,7 @@ while current != None:
 print("---")
 for brd in boards:
     print_board(brd)
+    print(f"COST = {board_cost(BoardState(brd))}")
     print("...")
 
 """

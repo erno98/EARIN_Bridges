@@ -9,6 +9,7 @@ from loadboard import load_map
 from generate_tree import generate_tree_bfs, generate_tree_dfs
 from debug import print_board
 from uninformed import iterative_dfs
+from informed import a_star
 from time import process_time
 
 # moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
@@ -16,7 +17,12 @@ from time import process_time
 
 start_board = load_map("board-easy.txt")
 time_start = process_time()
-node, depth, tree, visited = iterative_dfs(start_board)
+#-
+#node, depth, tree, visited = iterative_dfs(start_board)
+#-
+node, tree, visited = a_star(start_board)
+depth = 6
+#-
 time = process_time() - time_start
 final_bstate = node.content
 final_board = final_bstate.board

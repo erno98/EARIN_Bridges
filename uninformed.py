@@ -57,8 +57,9 @@ def dfs_internal(node: Tree.Node, tree: Tree, depth_max: int, depth = 0):
                 # If bridge added successfully, add to tree etc
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()
-                    if tree.find(board_next):
-                        continue
+                    #to gówno nie działa:
+                    # if tree.find(board_next):
+                    #     continue
                     if board_next.solved:
                         result = node.add_child(board_next)
                         return result

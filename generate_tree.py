@@ -56,9 +56,6 @@ def generate_tree_bfs(board: [[]]):
         # Making all possible moves
         for i in range(island_count):
             for j in range(i + 1, island_count):
-
-
-
                 # If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
                     board_next.evaluate()

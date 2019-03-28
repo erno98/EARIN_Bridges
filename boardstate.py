@@ -20,10 +20,12 @@ class BoardState():
         By default the board matrix is initialized as empty
         The island list is always initialized as empty, use method generate_islands() to update
         The solved attribute is always initialized as False, use method evaluate() to update
+        Objective function is intialized to 0
         """
         self.board = board_matrix
         self.islands = []
         self.solved = False
+        self.objective_function = 0
 
     def possible_bridges(self):
         """Method for evaluating maximal number of possible bridges

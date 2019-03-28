@@ -1,2 +1,0 @@
-"""Tutaj będzie nasz algorytm ;)
-"""

@@ -40,11 +40,28 @@ def board_cost(board: BoardState):
             cost of the board
     """
 
-    islands_num = 0
-    paths = [[]]
+    islands_num = len(board.islands)
+
+    path_lengths = []
+    visited = []
+    for i in range(islands_num):
+        stack = []
+        if visited.count(i) != 0:
+            continue
+        stack.append(i)
+        length = 0
+        while len(stack) > 0:
+            length += 1
+            current = stack.pop()
+            visited.append(current)
+            for cn in range(len(board.islands)):
+                if board.islands[current].connections[cn] > 0:
+                    if visited.count(cn) == 0 and stack.count(cn) == 0:
+                        stack.append(cn)
+        path_lengths.append(length)
 
     #TODO: zrobić to bo jestem zjebany
 
-    cost = islands_num - len(max(paths))
+    cost = islands_num - max(path_lengths)
     return cost
 

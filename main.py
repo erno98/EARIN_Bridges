@@ -44,6 +44,10 @@ find_2 = 1
 current = node
 current_depth = depth
 while current != None:
+    #test
+    print_board(current.content.board)
+    print("cost: ", board_cost(current.content))
+    #/test    
     current = current.parent
     current_depth -= 1
     if current_depth == find_1 or current_depth == find_2:
@@ -52,7 +56,9 @@ while current != None:
 print("---")
 for brd in boards:
     print_board(brd)
-    print(f"COST = {board_cost(BoardState(brd))}")
+#     to sie mordo nie zrobi bo jak tworzysz sobie nowy obiekt boardstate to nie ma w ogóle listy wysp i połączeń
+#     a żeśmy nie zrobili tworzenia boardstate z niepustej planszy
+#     print(f"COST = {board_cost(BoardState(brd))}")
     print("...")
 
 """

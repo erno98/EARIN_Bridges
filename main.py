@@ -1,71 +1,83 @@
-"""tutaj wszystko do kupy skleimy
-a na razie cos tam se testuje
-"""
-# TODO: Save tree to file:
-#       https://stackoverflow.com/questions/1047318/easiest-way-to-persist-a-data-structure-to-a-file-in-python
-
-#tescior
+import os
 from loadboard import load_map
-from generate_tree import generate_tree_bfs, generate_tree_dfs
-from debug import print_board
+from time import process_time
 from uninformed import iterative_dfs
 from informed import a_star
-from time import process_time
-from heuristic import board_cohesion
-from boardstate import BoardState
+import sys
+from debug import print_board
 
-# moves, brd = generate_tree_bfs(load_map("bridges7x7_1.txt"))
-# moves, brd = generate_tree_dfs(load_map("bridges7x7_3.txt"))
-
-start_board = load_map("board-easy.txt")
-time_start = process_time()
-#-
-#node, depth, tree, visited = iterative_dfs(start_board)
-#-
-node, tree, visited = a_star(start_board)
-depth = 6
-#-
-time = process_time() - time_start
-final_bstate = node.content
-final_board = final_bstate.board
-
-print_board(final_board)
-print("Solved = ", final_bstate.solved)
-print("depth = ", depth)
-print("nodes visited: ", visited)
-print("time: ", time, " [s]")
+class Result():
+        def __init__(self, start_board = [[]],\
+                idfs_time = 0, idfs_depth = 0, idfs_board = [[]], idfs_solved = False, idfs_nodes = 0,\
+                        astar_time = 0, astar_board = [[]], astar_solved = False, astar_nodes = 0):
+                self.start_board = start_board
+                self.idfs_time = idfs_time
+                self.idfs_depth = idfs_depth
+                self.idfs_board = idfs_board
+                self.idfs_solved = idfs_solved
+                self.idfs_nodes = idfs_nodes
+                self.astar_time = astar_time
+                self.astar_board = astar_board
+                self.astar_solved = astar_solved
+                self.astar_nodes = astar_nodes
 
 
-boards = [start_board, final_board]
-#zmienic to (chcesz to zautomatyzuj)
-find_1 = int(depth/2)
-find_2 = 1
+# Get all puzzle files from the puzzle directory
+puzzle_directory = "./puzzles"
+puzzles = []
 
-current = node
-current_depth = depth
-while current != None:
-    #test
-    print_board(current.content.board)
-    print("cost: ", board_cohesion(current.content))
-    #/test    
-    current = current.parent
-    current_depth -= 1
-    if current_depth == find_1 or current_depth == find_2:
-        boards.append(current.content.board)
+for filename in os.listdir(puzzle_directory):
+    if filename.endswith(".txt"):
+        puzzles.append(filename)
 
-print("---")
-for brd in boards:
-    print_board(brd)
-#     to sie mordo nie zrobi bo jak tworzysz sobie nowy obiekt boardstate to nie ma w ogóle listy wysp i połączeń
-#     a żeśmy nie zrobili tworzenia boardstate z niepustej planszy
-#    print(f"COHESION = {board_cohesion(BoardState(brd))}")
-    print("...")
+# Test algorithms
+results = []
 
-"""
-Zapisać:
-depth - głębokość dfsa
-boards - cztery plansze - wejściowa, wyjściowa i dwie pośrednie,
-        określone przez find_1 i find_2, czyli tu np po 1 i po 3 ruchach
-time - czas wykonywania algorytmu
-visited - ilość odwiedzonych stanów
-"""
+for input_file in puzzles:
+        start_board = load_map(puzzle_directory + "/" + input_file)
+        # Uninformed
+        time_start = process_time()
+        node_i, depth, tree_i, visit_i = iterative_dfs(start_board)
+        time_i = process_time() - time_start
+        # Informed
+        time_start = process_time()
+        node_a, tree_a, visit_a = a_star(start_board)
+        time_a = process_time() - time_start
+        res = Result()
+        res.start_board = start_board
+        res.idfs_board = node_i.content.board
+        res.idfs_depth = depth
+        res.idfs_solved = node_i.content.solved
+        res.idfs_time = time_i
+        res.idfs_nodes = visit_i
+        res.astar_board = node_a.content.board
+        res.astar_solved = node_a.content.solved
+        res.astar_time = time_a
+        res.astar_nodes = visit_a
+        results.append(res)
+
+# Redirect output to file:
+sys.stdout = open("results.txt", "w")
+
+# Print results
+print("Puzzle files used:")
+print(puzzles)
+for res in results:
+        print("---------------")
+        print("Starting Board:")
+        print_board(res.start_board)
+        print("Final Board: IDFS")
+        print_board(res.idfs_board)
+        print("Final Board: A*")
+        print_board(res.astar_board)
+        print("Solved: IDFS - ", res.idfs_solved, " A* - ", res.astar_solved)
+        print("Depth (no. of bridges): ", res.idfs_depth)
+        print("Time: IDFS - ", res.idfs_time, "s A* - ", res.astar_time, "s")
+        print("Nodes visited: IDFS - ", res.idfs_nodes, " A* - ", res.astar_nodes)
+
+# Print table
+sys.stdout = open("results_table.txt", "w")
+print("Depth\tIDFS time\tA* time\tIDFS nodes\tA* nodes")
+for res in results:
+        print(res.idfs_depth, "\t", res.idfs_time, "\t", res.astar_time, "\t",\
+                res.idfs_nodes, "\t", res.astar_nodes, "\t")

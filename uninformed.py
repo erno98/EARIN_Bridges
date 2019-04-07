@@ -1,7 +1,6 @@
 from tree import Tree
 from boardstate import BoardState
 from copy import deepcopy
-from math import factorial as fact
 
 visited = 0
 
@@ -19,13 +18,9 @@ def iterative_dfs(board: [[]]):
     root_board.generate_islands()
     root_board.evaluate()
 
-    max_bridges = root_board.possible_bridges()
-
-    node_number = 1 + max_bridges
-    for i in range(2, int(max_bridges)):
-        node_number += fact(max_bridges) / fact(max_bridges - i)
-
     #IDFS Algorithm
+    global visited
+    visited = 0
     depth = 0
     final_node = None
     while final_node == None:
@@ -37,9 +32,6 @@ def iterative_dfs(board: [[]]):
 def dfs(bstate: BoardState, depth_max: int):
     """
     """
-    global visited
-    visited = 0
-
     # Initiating Tree
     moves_tree = Tree(bstate)
 

@@ -46,7 +46,7 @@ current_depth = depth
 while current != None:
     #test
     print_board(current.content.board)
-    print("cost: ", board_cost(current.content))
+    print("cost: ", board_cohesion(current.content))
     #/test    
     current = current.parent
     current_depth -= 1

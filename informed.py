@@ -1,8 +1,7 @@
 from tree import Tree
 from boardstate import BoardState
 from copy import deepcopy
-#for testing
-from random import randint
+import heuristic
 
 def a_star(board: [[]]):
     """
@@ -16,8 +15,7 @@ def a_star(board: [[]]):
     root_board = BoardState(board)
     root_board.generate_islands()
     root_board.evaluate()
-    #TODO: insert objective function
-    root_board.objective_function = 0
+    root_board.objective_function = 2*heuristic.board_cohesion(root_board) - heuristic.board_mass(root_board)
     island_count = len(root_board.islands)
 
     # Initiating Tree
@@ -31,7 +29,6 @@ def a_star(board: [[]]):
     while len(to_visit) > 0:
 
         # Take element from stack
-        #TODO: take one with smallest objective function
         to_visit.sort(key = lambda node: node.content.objective_function, reverse = True)
         node_current = to_visit.pop()
         nodes_visited += 1
@@ -48,8 +45,7 @@ def a_star(board: [[]]):
             for j in range(i + 1, island_count):
                 # If bridge added succesfully, add to tree and stack and copy again
                 if board_next.add_bridge(i, j):
-                    #TODO: insert objective function
-                    board_next.objective_function = randint(0, 20)
+                    board_next.objective_function = 2*heuristic.board_cohesion(board_next) - heuristic.board_mass(board_next)
                     child = node_current.add_child(board_next)
                     to_visit.append(child)
                     board_next = deepcopy(node_current).content

@@ -63,6 +63,6 @@ def board_cohesion(board: BoardState):
 
     #TODO: zrobić to bo jestem zjebany
 
-    cohesion = islands_num - len(max(paths))
+    cohesion = islands_num - max(path_lengths)
     return cohesion
 

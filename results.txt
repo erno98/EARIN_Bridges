@@ -1,163 +1,163 @@
 Puzzle files used:
-['puzzle1.txt', 'puzzle2.txt', 'puzzle3.txt', 'puzzle4.txt', 'puzzle5.txt', 'puzzle6.txt', 'puzzle7.txt']
+['puzzle5.txt', 'puzzle4.txt', 'puzzle6.txt', 'puzzle7.txt', 'puzzle3.txt', 'puzzle2.txt', 'puzzle1.txt']
+---------------
+Starting Board:
+3 0 3 0 1 
+0 0 0 0 0 
+0 0 1 0 0 
+0 0 0 0 0 
+2 0 0 0 0 
+Final Board: IDFS
+3 - 3 - 1 
+: 0 | 0 0 
+: 0 1 0 0 
+: 0 0 0 0 
+2 0 0 0 0 
+Final Board: A*
+3 - 3 - 1 
+: 0 | 0 0 
+: 0 1 0 0 
+: 0 0 0 0 
+2 0 0 0 0 
+Solved: IDFS -  True  A* -  True
+Depth (no. of bridges):  5
+Time: IDFS -  8.6975 s A* -  0.11547599999999925 s
+Nodes visited: IDFS -  102  A* -  6
+---------------
+Starting Board:
+2 0 0 0 2 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+2 0 0 0 2 
+Final Board: IDFS
+2 - - - 2 
+| 0 0 0 | 
+| 0 0 0 | 
+| 0 0 0 | 
+2 - - - 2 
+Final Board: A*
+2 - - - 2 
+| 0 0 0 | 
+| 0 0 0 | 
+| 0 0 0 | 
+2 - - - 2 
+Solved: IDFS -  True  A* -  True
+Depth (no. of bridges):  4
+Time: IDFS -  1.0368180000000002 s A* -  0.040281999999999485 s
+Nodes visited: IDFS -  33  A* -  5
+---------------
+Starting Board:
+3 0 0 1 0 
+0 0 0 0 0 
+5 0 2 0 0 
+0 0 0 0 0 
+1 0 0 0 0 
+Final Board: IDFS
+3 - - 1 0 
+: 0 0 0 0 
+5 = 2 0 0 
+| 0 0 0 0 
+1 0 0 0 0 
+Final Board: A*
+3 - - 1 0 
+: 0 0 0 0 
+5 = 2 0 0 
+| 0 0 0 0 
+1 0 0 0 0 
+Solved: IDFS -  True  A* -  True
+Depth (no. of bridges):  6
+Time: IDFS -  53.457241999999994 s A* -  0.11631599999999764 s
+Nodes visited: IDFS -  255  A* -  7
+---------------
+Starting Board:
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 0 1 
+Final Board: IDFS
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 - - 1 
+Final Board: A*
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 - - 1 
+Solved: IDFS -  True  A* -  True
+Depth (no. of bridges):  1
+Time: IDFS -  0.0003760000000028185 s A* -  0.000950000000003115 s
+Nodes visited: IDFS -  1  A* -  2
+---------------
+Starting Board:
+0 0 0 0 0 
+2 0 0 3 0 
+0 0 0 0 0 
+0 0 0 1 0 
+0 0 0 0 0 
+Final Board: IDFS
+0 0 0 0 0 
+2 = = 3 0 
+0 0 0 | 0 
+0 0 0 1 0 
+0 0 0 0 0 
+Final Board: A*
+0 0 0 0 0 
+2 = = 3 0 
+0 0 0 | 0 
+0 0 0 1 0 
+0 0 0 0 0 
+Solved: IDFS -  True  A* -  True
+Depth (no. of bridges):  3
+Time: IDFS -  0.014127999999999474 s A* -  0.009835999999999956 s
+Nodes visited: IDFS -  7  A* -  4
 ---------------
 Starting Board:
 0 0 0 0 0 
 2 0 0 1 0 
 0 0 0 0 0 
+1 0 0 0 0 
 0 0 0 0 0 
-3 0 2 0 0 
 Final Board: IDFS
 0 0 0 0 0 
 2 - - 1 0 
 | 0 0 0 0 
-| 0 0 0 0 
-3 = 2 0 0 
+1 0 0 0 0 
+0 0 0 0 0 
 Final Board: A*
 0 0 0 0 0 
 2 - - 1 0 
 | 0 0 0 0 
-| 0 0 0 0 
-3 = 2 0 0 
-Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  4
-Time: IDFS -  0.078125 s A* -  0.015625 s
-Nodes visited: IDFS -  21  A* -  5
----------------
-Starting Board:
-0 0 2 0 0 
-0 0 0 0 0 
-1 0 5 0 0 
-0 0 0 0 0 
-0 0 2 0 0 
-Final Board: IDFS
-0 0 2 0 0 
-0 0 : 0 0 
-1 - 5 0 0 
-0 0 : 0 0 
-0 0 2 0 0 
-Final Board: A*
-0 0 2 0 0 
-0 0 : 0 0 
-1 - 5 0 0 
-0 0 : 0 0 
-0 0 2 0 0 
-Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  5
-Time: IDFS -  0.390625 s A* -  0.0 s
-Nodes visited: IDFS -  52  A* -  6
----------------
-Starting Board:
-0 2 0 0 2 
-0 0 0 0 0 
-0 0 0 0 0 
-0 2 0 0 2 
-0 0 0 0 0 
-Final Board: IDFS
-0 2 - - 2 
-0 | 0 0 | 
-0 | 0 0 | 
-0 2 - - 2 
-0 0 0 0 0 
-Final Board: A*
-0 2 - - 2 
-0 | 0 0 | 
-0 | 0 0 | 
-0 2 - - 2 
+1 0 0 0 0 
 0 0 0 0 0 
 Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  4
-Time: IDFS -  0.265625 s A* -  0.015625 s
-Nodes visited: IDFS -  33  A* -  5
+Depth (no. of bridges):  2
+Time: IDFS -  0.0030959999999993215 s A* -  0.004512000000005401 s
+Nodes visited: IDFS -  3  A* -  3
 ---------------
 Starting Board:
 0 0 0 0 0 
-0 3 0 0 1 
+1 0 0 1 0 
 0 0 0 0 0 
 0 0 0 0 0 
-0 3 0 0 1 
-Final Board: IDFS
-0 0 0 0 0 
-0 3 - - 1 
-0 : 0 0 0 
-0 : 0 0 0 
-0 3 - - 1 
-Final Board: A*
-0 0 0 0 0 
-0 3 - - 1 
-0 : 0 0 0 
-0 : 0 0 0 
-0 3 - - 1 
-Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  4
-Time: IDFS -  0.078125 s A* -  0.015625 s
-Nodes visited: IDFS -  24  A* -  5
----------------
-Starting Board:
-2 0 1 0 0 
-0 0 0 0 0 
-2 0 3 0 1 
-0 0 0 0 0 
-0 0 1 0 0 
-Final Board: IDFS
-2 - 1 0 0 
-| 0 0 0 0 
-2 - 3 - 1 
-0 0 | 0 0 
-0 0 1 0 0 
-Final Board: A*
-2 - 1 0 0 
-| 0 0 0 0 
-2 - 3 - 1 
-0 0 | 0 0 
-0 0 1 0 0 
-Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  5
-Time: IDFS -  18.046875 s A* -  0.03125 s
-Nodes visited: IDFS -  204  A* -  6
----------------
-Starting Board:
-0 0 0 0 0 
-0 0 4 0 2 
-0 0 0 0 0 
-2 0 4 0 0 
 0 0 0 0 0 
 Final Board: IDFS
 0 0 0 0 0 
-0 0 4 = 2 
-0 0 : 0 0 
-2 = 4 0 0 
+1 - - 1 0 
+0 0 0 0 0 
+0 0 0 0 0 
 0 0 0 0 0 
 Final Board: A*
 0 0 0 0 0 
-0 0 4 = 2 
-0 0 : 0 0 
-2 = 4 0 0 
+1 - - 1 0 
+0 0 0 0 0 
+0 0 0 0 0 
 0 0 0 0 0 
 Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  6
-Time: IDFS -  3.5 s A* -  0.03125 s
-Nodes visited: IDFS -  152  A* -  7
----------------
-Starting Board:
-0 2 0 1 0 
-0 0 0 0 0 
-0 3 0 0 1 
-0 0 0 0 0 
-0 2 0 0 1 
-Final Board: IDFS
-0 2 - 1 0 
-0 | 0 0 0 
-0 3 - - 1 
-0 | 0 0 0 
-0 2 - - 1 
-Final Board: A*
-0 2 - 1 0 
-0 | 0 0 0 
-0 3 - - 1 
-0 | 0 0 0 
-0 2 - - 1 
-Solved: IDFS -  True  A* -  True
-Depth (no. of bridges):  5
-Time: IDFS -  14.875 s A* -  0.03125 s
-Nodes visited: IDFS -  185  A* -  6
+Depth (no. of bridges):  1
+Time: IDFS -  0.0003699999999966508 s A* -  0.0009319999999988227 s
+Nodes visited: IDFS -  1  A* -  2

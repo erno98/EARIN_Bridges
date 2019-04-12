@@ -23,38 +23,40 @@ class Result():
 
 
 # Get all puzzle files from the puzzle directory
-puzzle_directory = "./puzzles"
+puzzle_directories = ["./puzzles_iter_5x5", "./puzzles_iter_7x7"]
 puzzles = []
-
-for filename in os.listdir(puzzle_directory):
-    if filename.endswith(".txt"):
-        puzzles.append(filename)
 
 # Test algorithms
 results = []
 
-for input_file in puzzles:
-        start_board = load_map(puzzle_directory + "/" + input_file)
-        # Uninformed
-        time_start = process_time()
-        node_i, depth, tree_i, visit_i = iterative_dfs(start_board)
-        time_i = process_time() - time_start
-        # Informed
-        time_start = process_time()
-        node_a, tree_a, visit_a = a_star(start_board)
-        time_a = process_time() - time_start
-        res = Result()
-        res.start_board = start_board
-        res.idfs_board = node_i.content.board
-        res.idfs_depth = depth
-        res.idfs_solved = node_i.content.solved
-        res.idfs_time = time_i
-        res.idfs_nodes = visit_i
-        res.astar_board = node_a.content.board
-        res.astar_solved = node_a.content.solved
-        res.astar_time = time_a
-        res.astar_nodes = visit_a
-        results.append(res)
+for puzzle_directory in puzzle_directories:
+        puzzles = []
+        for filename in os.listdir(puzzle_directory):
+            if filename.endswith(".txt"):
+                puzzles.append(filename)
+        for input_file in puzzles:
+                start_board = load_map(puzzle_directory + "/" + input_file)
+                print(len(start_board))
+                # Uninformed
+                time_start = process_time()
+                node_i, depth, tree_i, visit_i = iterative_dfs(start_board)
+                time_i = process_time() - time_start
+                # Informed
+                time_start = process_time()
+                node_a, tree_a, visit_a = a_star(start_board)
+                time_a = process_time() - time_start
+                res = Result()
+                res.start_board = start_board
+                res.idfs_board = node_i.content.board
+                res.idfs_depth = depth
+                res.idfs_solved = node_i.content.solved
+                res.idfs_time = time_i
+                res.idfs_nodes = visit_i
+                res.astar_board = node_a.content.board
+                res.astar_solved = node_a.content.solved
+                res.astar_time = time_a
+                res.astar_nodes = visit_a
+                results.append(res)
 
 # Redirect output to file:
 sys.stdout = open("results.txt", "w")
@@ -77,7 +79,7 @@ for res in results:
 
 # Print table
 sys.stdout = open("results_table.txt", "w")
-print("Depth\tIDFS time\tA* time\tIDFS nodes\tA* nodes")
+print("Size\tDepth\tIDFS time\tA* time\tIDFS nodes\tA* nodes")
 for res in results:
-        print(res.idfs_depth, "\t", res.idfs_time, "\t", res.astar_time, "\t",\
+        print(len(res.start_board), "\t", res.idfs_depth, "\t", res.idfs_time, "\t", res.astar_time, "\t",\
                 res.idfs_nodes, "\t", res.astar_nodes, "\t")

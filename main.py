@@ -5,6 +5,7 @@ from uninformed import iterative_dfs
 from informed import a_star
 import sys
 from debug import print_board
+from progress_bar import print_progress
 
 class Result():
         def __init__(self, start_board = [[]],\
@@ -28,6 +29,9 @@ puzzles = []
 
 # Test algorithms
 results = []
+total_puzzles = 14
+i = 0
+print_progress(i, 14, prefix="Puzzles solved")
 
 for puzzle_directory in puzzle_directories:
         puzzles = []
@@ -35,8 +39,9 @@ for puzzle_directory in puzzle_directories:
             if filename.endswith(".txt"):
                 puzzles.append(filename)
         for input_file in puzzles:
+                i += 1
+                print_progress(i, total_puzzles, prefix="Puzzles solved")
                 start_board = load_map(puzzle_directory + "/" + input_file)
-                print(len(start_board))
                 # Uninformed
                 time_start = process_time()
                 node_i, depth, tree_i, visit_i = iterative_dfs(start_board)
@@ -81,5 +86,5 @@ for res in results:
 sys.stdout = open("results_table.txt", "w")
 print("Size\tDepth\tIDFS time\tA* time\tIDFS nodes\tA* nodes")
 for res in results:
-        print(len(res.start_board), "\t", res.idfs_depth, "\t", res.idfs_time, "\t", res.astar_time, "\t",\
+        print(len(res.start_board), "\t", res.idfs_depth, "\t", res.idfs_time, "\t", res.astar_time, "\t",
                 res.idfs_nodes, "\t", res.astar_nodes, "\t")

@@ -59,10 +59,30 @@ def bar_plot_time(results_file):
     data_time_idfs_7 = [data['IDFS time'][d] for d in range(0, len(data['IDFS time'])) if data['Size'][d] == 7]
     data_time_a_star_7 = [data['A* time'][d] for d in range(0, len(data['A* time'])) if data['Size'][d] == 7]
 
+
+    # TODO: data chuj wie czemu nie jest posortowana po przepuszczeniu przez wcześniejsze algorytmy, naprawić
+    data_time_5 = pd.DataFrame(np.array([data_time_idfs_5, data_time_a_star_5])).transpose()
+    data_time_7 = pd.DataFrame(np.array([data_time_a_star_5, data_time_a_star_7])).transpose()
+
     data_time_idfs = pd.DataFrame(np.array([data_time_idfs_5, data_time_idfs_7])).transpose()
     data_time_a_star = pd.DataFrame(np.array([data_time_a_star_5, data_time_a_star_7])).transpose()
 
-    plot_clustered_stacked([data_time_idfs, data_time_a_star], ['idfs', 'a*'])
+    p1 = data_time_5.plot.bar()
+    plt.yscale('log')
+    plt.legend(["IDFS", "A*"])
+
+    p2 = data_time_7.plot.bar()
+
+    plt.yscale('log')
+    plt.legend(["A*", "IDFS"])
+    plt.xlabel("Number of bridges")
+    plt.ylabel("Time of computation [s]")
+    plt.show()
+
+
+
+
+    # plot_clustered_stacked([data_time_idfs, data_time_a_star], ['idfs', 'a*'])
 
     # data_time = pd.DataFrame({"IDFS time" : data_time_idfs,
     #                          "A* time" : data_time_a_star}, index=[str(i) for i in range(0, 7)])
@@ -88,11 +108,6 @@ def bar_plot_time(results_file):
     #data_time.plot.bar(rot=0)
 
     # plt.xticks(ticks=list(range(0, 14)), labels=data['Depth'])
-    plt.yscale('log')
-    plt.legend(['a', 'b', 'c','d'])
-    plt.xlabel("Number of bridges")
-    plt.ylabel("Time of computation [s]")
-    plt.show()
 
 
 results = "results_table.txt"

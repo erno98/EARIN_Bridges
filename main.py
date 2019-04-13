@@ -39,8 +39,6 @@ for puzzle_directory in puzzle_directories:
             if filename.endswith(".txt"):
                 puzzles.append(filename)
         for input_file in puzzles:
-                i += 1
-                print_progress(i, total_puzzles, prefix="Puzzles solved")
                 start_board = load_map(puzzle_directory + "/" + input_file)
                 # Uninformed
                 time_start = process_time()
@@ -62,6 +60,11 @@ for puzzle_directory in puzzle_directories:
                 res.astar_time = time_a
                 res.astar_nodes = visit_a
                 results.append(res)
+                # Update progress bar
+                i += 1
+                print_progress(i, total_puzzles, prefix="Puzzles solved")
+
+results.sort(key = lambda res: res.idfs_depth)
 
 # Redirect output to file:
 sys.stdout = open("results.txt", "w")

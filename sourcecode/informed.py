@@ -1,10 +1,27 @@
+"""Module informed
+
+This module contains the function for the A* algorithm
+
+"""
+
+
 from tree import Tree
 from boardstate import BoardState
 from copy import deepcopy
 import heuristic
 
 def a_star(board: [[]]):
-    """
+    """Function a_star
+
+    Searches for a solution using the A* algorithm
+
+    args:
+        board ([[]]): the starting board
+
+    returns:
+        final_node (Tree.Node): the final node of the tree containing the solution
+        moves_tree (Tree): the whole tree generated in the process
+        nodes_visited (int): the number of tree nodes visited by the algorithm
     """
     # Checking size
     size = len(board)

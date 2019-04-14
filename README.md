@@ -1,9 +1,8 @@
 # EARIN_Bridges
-Bridges (hashi)
+Project 1 for EARIN (Introduction to Artificial Intelligence)
 
-## TODO: 
-  - ### GRAPHS:
-    - bar graph: visited nodes vs algorithm (one bar for each puzzle, height of nodes visited)
-    - bar graph: computation time vs algorithm (same logic as above)
-          *(Those two can be combined to one plot)*
-    - ?
+##Authors:
+  - Ernest Pokropek (github.com/erno98)
+  - Kacper Wojakowski (github.com/kacpwoja)
+
+## Open the .PDF file for the description.

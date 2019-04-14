@@ -1,3 +1,9 @@
+"""Module loadboard
+
+This module contains a function for loading a board from a text file
+and storing it in a matrix (list of lists)
+
+"""
 
 def load_map(file_name):
 

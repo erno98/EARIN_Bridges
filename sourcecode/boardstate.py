@@ -2,8 +2,6 @@
 
 This module is supposed to represent the board state that will be inserted into a tree as a class.
 
-Todo:
-    * real tests
 """
 
 class BoardState():
@@ -27,24 +25,6 @@ class BoardState():
         self.solved = False
         self.objective_function = 0
 
-    def possible_bridges(self):
-        """Method for evaluating maximal number of possible bridges
-
-        args:
-            None
-
-        Returns:
-            number of bridges possible to be placed
-        """
-
-        num = 0
-
-        for isl in self.islands:
-            num += isl.bridges_expected
-
-        return num/2
-
-
     def evaluate(self):
         """Method for evaluating if the board state represented is solved or not
 
@@ -56,14 +36,18 @@ class BoardState():
         Returns:
             True if board is solved, False otherwise
         """
-        #To be solved:
-        #A all islands full
-        #B all islands connected
+        # To be solved:
+        # A all islands full
+        # B all islands connected
+
+        # A:
         for isl in self.islands:
             if isl.bridges_current != isl.bridges_expected:
                 self.solved = False
                 return False
 
+        # B: checks how many islands are connected to the first one
+        # and compares that with the amount of islands
         visited = []
         stack = []
         stack.append(0)
@@ -128,84 +112,84 @@ class BoardState():
         returns:
             True if placement was successful, False otherwise
         """
-        #Reasons to fail:
-        #A Island IDs are incorrect
-        #B One of the islands is full
-        #C Islands already connected twice
-        #D Islands not on the same x or y
-        #E Bridge or island in the way
-        #If bridges are already connected once, E can be skipped
+        # Reasons to fail:
+        # A Island IDs are incorrect
+        # B One of the islands is full
+        # C Islands already connected twice
+        # D Islands not on the same x or y
+        # E Bridge or island in the way
+        # If bridges are already connected once, E can be skipped
 
-        #A
+        # A
         if island_one < 0 or island_two < 0 or\
             island_one > len(self.islands) or island_two > len(self.islands) or\
                 island_one == island_two:
             
             return False
 
-        #B
+        # B
         if self.islands[island_one].bridges_expected == self.islands[island_one].bridges_current or\
             self.islands[island_two].bridges_expected == self.islands[island_two].bridges_current:
 
             return False
 
-        #C
+        # C
         if self.islands[island_one].connections[island_two] == 2:
 
             return False
 
-        #D
+        # D
         if self.islands[island_one].x != self.islands[island_two].x and\
             self.islands[island_one].y != self.islands[island_two].y:
 
             return False
 
-        #E
+        # E
         if self.islands[island_one].connections[island_two] != 1:
             if self.islands[island_one].x == self.islands[island_two].x:
                 x = self.islands[island_one].x
-                #Horizontal bridge
+                # Horizontal bridge
                 for y in range(self.islands[island_one].y + 1, self.islands[island_two].y):
                     if self.board[x][y] > 0:
                         return False
             elif self.islands[island_one].y == self.islands[island_two].y:
                 y = self.islands[island_one].y
-                #Vertical bridge
+                # Vertical bridge
                 for x in range(self.islands[island_one].x + 1, self.islands[island_two].x):
                     if self.board[x][y] > 0:
                         return False
 
-        #Otherwise:
-        #Increasing connections
+        # Otherwise:
+        # Increasing connections
         self.islands[island_one].connections[island_two] += 1
         self.islands[island_two].connections[island_one] += 1
         self.islands[island_one].bridges_current += 1
         self.islands[island_two].bridges_current += 1
-        #Selecting and placing bridge
+        # Selecting and placing bridge
         bridge = 0
         if self.islands[island_one].x == self.islands[island_two].x:
             x = self.islands[island_one].x
-            #Horizontal bridge
+            # Horizontal bridge
             if self.islands[island_one].connections[island_two] == 2:
-                #Double bridge
+                # Double bridge
                 bridge = 22
             if self.islands[island_one].connections[island_two] == 1:
-                #Single bridge
+                # Single bridge
                 bridge = 21
             for y in range(self.islands[island_one].y + 1, self.islands[island_two].y):
                 self.board[x][y] = bridge
         elif self.islands[island_one].y == self.islands[island_two].y:
             y = self.islands[island_one].y
-            #Vertical bridge
+            # Vertical bridge
             if self.islands[island_one].connections[island_two] == 2:
-                #Double bridge
+                # Double bridge
                 bridge = 12
             if self.islands[island_one].connections[island_two] == 1:
-                #Single bridge
+                # Single bridge
                 bridge = 11
             for x in range(self.islands[island_one].x + 1, self.islands[island_two].x):
                 self.board[x][y] = bridge
-        #Done
+        # Done
         return True
 
     class Island():
@@ -225,7 +209,3 @@ class BoardState():
             self.bridges_expected = bridges
             self.bridges_current = 0
             self.connections = []
-        #
-        # def is_connected(self):
-        #     return self.connections != []
-

@@ -1,3 +1,9 @@
+"""Module heuristic
+
+This module contains functions calculating the heuristic function and the cost function
+
+"""
+
 from tree import Tree
 from boardstate import BoardState
 
@@ -43,10 +49,12 @@ def board_cohesion(board: BoardState):
 
     islands_num = len(board.islands)
 
+    # Count the length of all unique paths
     path_lengths = []
     visited = []
     for i in range(islands_num):
         stack = []
+        # If the path is not unique, do not count it.
         if visited.count(i) != 0:
             continue
         stack.append(i)
@@ -60,8 +68,6 @@ def board_cohesion(board: BoardState):
                     if visited.count(cn) == 0 and stack.count(cn) == 0:
                         stack.append(cn)
         path_lengths.append(length)
-
-    #TODO: zrobić to bo jestem zjebany
 
     cohesion = islands_num - max(path_lengths)
     return cohesion

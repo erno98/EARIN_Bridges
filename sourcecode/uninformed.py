@@ -1,3 +1,10 @@
+"""Module informed
+
+This module contains the function for the IDFS algorithm
+and some internal functions needed for it
+
+"""
+
 from tree import Tree
 from boardstate import BoardState
 from copy import deepcopy
@@ -7,7 +14,7 @@ visited = 0
 def iterative_dfs(board: [[]]):
     """
     """
-    #Initializing boardstate
+    # Initializing boardstate
     # Checking size
     size = len(board)
     for i in range(size):
@@ -18,7 +25,7 @@ def iterative_dfs(board: [[]]):
     root_board.generate_islands()
     root_board.evaluate()
 
-    #IDFS Algorithm
+    # IDFS Algorithm
     global visited
     visited = 0
     depth = 0
